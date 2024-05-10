@@ -40,6 +40,12 @@ function findNodeModules(baseDir) {
     });
 }
 
-// Start searching from the current directory or a specified directory
-const startDirectory = process.argv[2] || '.';
+// Check if a directory path was provided
+if (!process.argv[2]) {
+    console.error('Please provide a directory path.');
+    process.exit(1);
+}
+
+// Start searching from the provided directory
+const startDirectory = process.argv[2];
 findNodeModules(startDirectory);
